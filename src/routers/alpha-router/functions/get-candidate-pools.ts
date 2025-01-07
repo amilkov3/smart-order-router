@@ -5,20 +5,22 @@ import _ from 'lodash';
 
 import { isNativeCurrency } from '@uniswap/universal-router-sdk';
 import {
-  DAI_OPTIMISM_SEPOLIA,
-  ITokenListProvider,
-  IV2SubgraphProvider,
   IV4PoolProvider,
+  V4PoolAccessor,
+} from '../../../providers/v4/pool-provider';
+import {
   IV4SubgraphProvider,
+  V4SubgraphPool,
+} from '../../../providers/v4/subgraph-provider'
+import {
+  IV2SubgraphProvider,
+  V2SubgraphPool,
+} from '../../../providers/v2/subgraph-provider'
+import {
   USDC_ARBITRUM_SEPOLIA,
   USDC_OPTIMISM_SEPOLIA,
   USDT_OPTIMISM_SEPOLIA,
-  V2SubgraphPool,
-  V4PoolAccessor,
-  V4SubgraphPool,
   WBTC_OPTIMISM_SEPOLIA,
-} from '../../../providers';
-import {
   CELO,
   CELO_ALFAJORES,
   CEUR_CELO,
@@ -32,6 +34,7 @@ import {
   DAI_MOONBEAM,
   DAI_OPTIMISM,
   DAI_OPTIMISM_GOERLI,
+  DAI_OPTIMISM_SEPOLIA,
   DAI_POLYGON_MUMBAI,
   DAI_SEPOLIA,
   FEI_MAINNET,
@@ -91,6 +94,7 @@ import { parseFeeAmount } from '../../../util/amounts';
 import { log } from '../../../util/log';
 import { metric, MetricLoggerUnit } from '../../../util/metric';
 import { AlphaRouterConfig } from '../alpha-router';
+import { ITokenListProvider } from '../../../providers/caching-token-list-provider';
 
 export type SubgraphPool = V2SubgraphPool | V3SubgraphPool | V4SubgraphPool;
 export type CandidatePoolsBySelectionCriteria = {
